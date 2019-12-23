@@ -1,0 +1,30 @@
+<%- include("../partials/header"); %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-7">
+      <h1>Add new Campgrounds</h1>
+      <form class="my-4" action="/campgrounds" method="POST">
+        <div class="form-group">
+          <lable for="name">Name:</lable>
+          <input class="form-control" type="text" placeholder="Name" id="name" name="name" />
+        </div>
+        <div class="form-group">
+          <lable for="image">Image:</lable>
+          <input class="form-control" type="text" placeholder="Image Url" id="image" name="image" />
+        </div>
+		<div class="form-group">
+          <lable for="description">Description:</lable>
+          <input class="form-control" type="text" placeholder="Description" id="description" name="description" />
+        </div>
+		<div class="form-group">
+          <lable for="price">Price:</lable> 
+          <input class="form-control" type="number" placeholder="Price" id="price" name="price" min="100" step="10" />
+        </div>
+		<div class="form-group">
+	    	<button class="btn btn-primary btn-block">Submit</button>
+	    </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include("../partials/footer"); %>

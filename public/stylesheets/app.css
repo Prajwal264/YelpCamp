@@ -1,0 +1,17 @@
+.well {
+	background-color: rgba(231, 235, 224, 0.6);
+	padding: 20px;
+}
+
+.img-thumbnail {
+	padding: 0;
+}
+.img-fluid {
+	width: 100%;
+}
+.caption {
+	padding: 9px;
+}
+.inline {
+	display: inline;
+}
