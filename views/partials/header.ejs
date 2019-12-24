@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Campgrounds</title>
     <link
       rel="stylesheet"
@@ -9,7 +10,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-	 <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="/stylesheets/app.css" />
   </head>
   <body>
     <!-- navbar -->
@@ -28,33 +29,36 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-			<% if(!currentUser) { %>
+          <% if(!currentUser) { %>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/register">Sign Up</a>
           </li>
-		<%	} else { %>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">Signed in as <%= currentUser.username %></a> 
-		  </li>
+          <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              >Signed in as <%= currentUser.username %></a
+            >
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
-		<%	} %>
+          <% } %>
         </ul>
       </div>
     </nav>
-	<div class="container">
-	  		<% if(success && success.length > 0)  { %>
-		<div class="alert alert-success" role="alert">
-		  <%= success %>
-		</div> <% } %>
-		<% if(error && error.length > 0)  { %>
-		<div class="alert alert-danger" role="alert">
-		  <%= error %>
-		</div> <% } %>
-	</div>
-
-	  
+    <div class="container">
+      <% if(success && success.length > 0) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+      <% } %> <% if(error && error.length > 0) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
