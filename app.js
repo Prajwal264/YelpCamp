@@ -10,7 +10,7 @@ var bodyParser = require("body-parser");
 // import mongoose
 var mongoose = require("mongoose");
 
-// import flash 
+// import flash
 var flash = require("connect-flash");
 
 // import passport
@@ -28,8 +28,7 @@ var User = require("./models/User.js");
 
 var Campground = require("./models/Campground.js");
 
-var Comment = require("./models/Comments.js")
-
+var Comment = require("./models/Comments.js");
 
 var seedDB = require("./seed.js");
 
@@ -41,12 +40,18 @@ var indexRoutes = require("./routes/index");
 // execute seed
 // seedDB();
 
-// create a connection 
+// create a connection
 // local connection
-mongoose.connect("mongodb://localhost:27017/Yelpcamp", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/Yelpcamp", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // global connection
-mongoose.connect("mongodb+srv://Prajwal264:Kingsnvrdie264@yelpcamp-ul0jg.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(
+  "mongodb+srv://Prajwal264:Kingsnvrdie264@yelpcamp-ul0jg.mongodb.net/test?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
 
 // mongodb+srv://Prajwal264:<password>@yelpcamp-ul0jg.mongodb.net/test?retryWrites=true&w=majority
 
@@ -67,11 +72,13 @@ app.use(flash());
 
 // passport configuration
 // set up the export session
-app.use(expressSession({
-	secret: "Yelpcamp is great",
-	resave: false,
-	saveUninitialized: false
-}));
+app.use(
+  expressSession({
+    secret: "Yelpcamp is great",
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
 // initialize passport
 app.use(passport.initialize());
@@ -84,22 +91,20 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 // set the middleware for ever route
-app.use(function(req, res, next){
-	res.locals.currentUser = req.user;
-	res.locals.success = req.flash("success");
-	res.locals.error = req.flash("error");
-	return next();
-})
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  return next();
+});
 
 // use the required routes
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-
 // listener
-app.listen(3000, process.env.IP, function() {
+app.listen(process.env.PORT, process.env.IP, function() {
   console.log("Yelpcamp server has started");
 });
